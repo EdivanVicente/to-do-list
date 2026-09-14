@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>to-do list</title>
 </head>
 <body>
-    <h1>TO DO list</h1>
+    
+    <div>
+        <h1>TO DO list</h1>
+        <input type="text" id="taskInput"  placeholder="Adicione uma nova tarefa">
+        <button onclick="addTask()">+ Add</button>
+        <ul id="taskList">
+            <li> <input type="checkbox"> <span>Estudar JavaScript</span> <button>🗑</button> </li>
+        </ul>
+
+
+
+    </div>
+   
+   
 </body>
 </html>

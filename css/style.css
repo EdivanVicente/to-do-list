@@ -1,0 +1,29 @@
+div{
+   
+    align-items: center;
+     margin: 80px auto;
+    border: 1px solid #000;
+    width: 500px;
+    height: 500px;
+    
+}
+h1{
+    margin: 20px ;
+    text-align: center;
+    color:blue
+}
+input{
+    width: 280px;
+    height: 20px;
+    margin: 20px 10px 20px 50px;
+    border-radius: 5px;
+    padding: 10px 14px;
+}
+input[type="checkbox"] { appearance: none; width: 20px; height: 20px; border: 2px solid #999; border-radius: 50%; cursor: pointer; } input[type="checkbox"]:checked { background-color: #22c55e; border-color: #22c55e; }
+button{
+    width: 100px;
+    height: 40px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
