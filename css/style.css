@@ -79,3 +79,11 @@ button {
     text-decoration: line-through;
     color: #999;
 }
+#emptyMessage {
+text-align: center;
+color: #999;
+}
+#allDoneMessage {
+text-align: center;
+color: #22c55e;
+}
