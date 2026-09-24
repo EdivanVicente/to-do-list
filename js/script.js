@@ -110,3 +110,10 @@ function checkAllDone() {
 // ============================================
 checkEmptyList();
 checkAllDone();
+
+let taskInput = document.getElementById("taskInput");
+taskInput.addEventListener("keydown", function(evento) {
+    if (evento.key === "Enter") {
+        addTask();
+    }
+});
