@@ -93,8 +93,8 @@ function checkAllDone() {
     let taskList = document.getElementById("taskList");
     let mensagem = document.getElementById("allDoneMessage");
 
-    let total    = taskList.children.length;                              // quantos <li>
-    let marcadas = taskList.querySelectorAll("input:checked").length;     // quantos marcados
+    let total    = taskList.children.length;                            // quantos <li>
+    let marcadas = taskList.querySelectorAll("input:checked").length;   // quantos marcados
 
     // total > 0 evita mostrar o troféu com a lista vazia
     if (total > 0 && marcadas === total) {
@@ -106,13 +106,35 @@ function checkAllDone() {
 
 
 // ============================================
+// AJUDANTE 3 - salvar as tarefas (em construção)
+// ============================================
+function saveTasks() {
+
+    let taskList = document.getElementById("taskList");
+    let tarefas = [];   // array vazio, vai ser preenchido abaixo
+
+    // visita cada <li> da lista, um por vez
+    taskList.querySelectorAll("li").forEach(function(li) {
+        tarefas.push({
+        texto: li.querySelector("span").textContent,
+        concluida: li.querySelector("input").checked
+});
+
+    });
+    console.log(tarefas);
+}
+
+
+// ============================================
 // EXECUÇÃO INICIAL - roda quando a página abre
 // ============================================
 checkEmptyList();
 checkAllDone();
 
-let taskInput = document.getElementById("taskInput");
-taskInput.addEventListener("keydown", function(evento) {
+// permite adicionar tarefa apertando Enter no campo de texto
+let inputEnter = document.getElementById("taskInput");
+
+inputEnter.addEventListener("keydown", function(evento) {
     if (evento.key === "Enter") {
         addTask();
     }
