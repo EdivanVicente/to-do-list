@@ -38,10 +38,11 @@ function addTask() {
         // reordena: como o newTask já está na lista, estas linhas MOVEM ele
         if (taskCheckbox.checked) {
             taskList.appendChild(newTask);   // concluída → fim da lista
+           
         } else {
             taskList.prepend(newTask);       // voltou a fazer → topo da lista
         }
-
+        saveTasks();
         checkAllDone();   // mudou a contagem de marcadas
     });
 
@@ -53,14 +54,15 @@ function addTask() {
     taskButton.addEventListener("click", function() {
         taskList.removeChild(newTask);   // apaga a tarefa inteira
         checkEmptyList();                // a lista pode ter ficado vazia
-        checkAllDone();                  // as que sobraram podem estar todas feitas
+        checkAllDone();  
+        saveTasks();                // as que sobraram podem estar todas feitas
     });
 
     newTask.appendChild(taskButton);
 
     // entrega na tela (só agora a tarefa aparece)
     taskList.appendChild(newTask);
-
+    saveTasks()
     // limpa o campo para a próxima tarefa
     taskInput.value = "";
 
@@ -121,6 +123,8 @@ function saveTasks() {
 });
 
     });
+    
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
     console.log(tarefas);
 }
 
@@ -128,6 +132,7 @@ function saveTasks() {
 // ============================================
 // EXECUÇÃO INICIAL - roda quando a página abre
 // ============================================
+
 checkEmptyList();
 checkAllDone();
 
@@ -139,3 +144,29 @@ inputEnter.addEventListener("keydown", function(evento) {
         addTask();
     }
 });
+
+
+// ============================================
+// AJUDANTE 4 - carregar tarefas salvas
+// ============================================
+function loadTasks() {
+    let tarefasSalvas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    let tasList = document.getElementById("taskList");
+
+    tarefasSalvas.forEach(function(tarefa) {
+        let newTask = document.createElement("li");
+        
+        let taskCheckbox = document.createElement("input");
+        taskCheckbox.type = "checkbox";
+        taskCheckbox.checked = tarefa.concluida;
+
+        let taskSpan = document.textContent = tarefa.texto;
+        if(tarefa.concluida){
+            taskSpan.classList.toggle(newTask);
+        }
+    taskList.appendChild(newTask);
+    });
+    checkEmptyList();
+    checkAllDone();
+    
+}
